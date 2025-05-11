@@ -19,6 +19,23 @@ export default async function Signup(props: {
     );
   }
 
+  if ("success" in searchParams) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-8">
+        <div className="w-full max-w-md rounded-lg border border-border bg-card p-8 shadow-lg text-center">
+          <h1 className="text-3xl font-bold mb-4 text-green-600">Check your email!</h1>
+          <p className="text-lg text-gray-700 mb-6">
+            Thanks for signing up. Please check your email and click the confirmation link to activate your account.
+          </p>
+          <p className="text-sm text-gray-500 mb-8">
+            Once you confirm, you can log in with your new account.
+          </p>
+          <Link href="/sign-in" className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition">Back to Sign In</Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />

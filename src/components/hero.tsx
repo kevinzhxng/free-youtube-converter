@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, Download, Music, Video } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <div className="relative overflow-hidden bg-white">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 opacity-70" />
-      <div className="relative pt-24 pb-32 sm:pt-32 sm:pb-40">
+      <div className="relative">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-8 tracking-tight">
+            <Image className="mx-auto" src="/youtubemp3tomp4v1.png" alt="Logo" width={160} height={160} />
               YouTube{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 MP3/MP4

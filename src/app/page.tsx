@@ -13,6 +13,7 @@ import {
   Clock,
   Layers,
 } from "lucide-react";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -21,13 +22,15 @@ export default async function Home() {
   } = await supabase.auth.getUser();
 
   const { data: plans, error } = await supabase.functions.invoke(
-    "supabase-functions-get-plans",
+    "supabase-functions-get-plans"
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <Navbar />
-      <Hero />
+    <div className="">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+        <Navbar />
+        <Hero />
+      </div>
 
       {/* Features Section */}
       <section className="py-24 bg-white">
@@ -216,20 +219,49 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
+      {/* FAQ Section */}
+      <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Download?</h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Start downloading your favorite YouTube content in bulk today.
-          </p>
-          <a
-            href="/dashboard"
-            className="inline-flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Get Started Now
-            <ArrowUpRight className="ml-2 w-4 h-4" />
-          </a>
+          <h2 className="text-4xl font-extrabold mb-2 text-gray-900">Frequently Asked Questions</h2>
+          <p className="text-lg text-gray-600 mb-10">Everything you need to know about using our YouTube downloader.</p>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white/95 rounded-3xl shadow-2xl p-8 sm:p-14 my-12">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1" className="mb-6 last:mb-0 rounded-2xl shadow-md">
+                  <AccordionTrigger className="text-lg font-semibold text-gray-800 py-6 px-4 hover:text-blue-600 transition-colors rounded-2xl" >
+                    Is this YouTube downloader free to use?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 text-base pb-6 px-4 rounded-b-2xl">
+                    Yes! You can download MP3 or MP4 files from YouTube videos for free. Some advanced features may require a paid plan.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2" className="mb-6 last:mb-0 rounded-2xl shadow-md">
+                  <AccordionTrigger className="text-lg font-semibold text-gray-800 py-6 px-4 hover:text-blue-600 transition-colors rounded-2xl">
+                    Do I need to create an account?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 text-base pb-6 px-4 rounded-b-2xl">
+                    No account is required for basic downloads. However, creating an account unlocks additional features and lets you manage your downloads.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3" className="mb-6 last:mb-0 rounded-2xl shadow-md">
+                  <AccordionTrigger className="text-lg font-semibold text-gray-800 py-6 px-4 hover:text-blue-600 transition-colors rounded-2xl">
+                    Can I download entire playlists or channels?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 text-base pb-6 px-4 rounded-b-2xl">
+                    Yes, you can paste a playlist or channel URL to download multiple videos at once.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-4" className="mb-6 last:mb-0 rounded-2xl shadow-md">
+                  <AccordionTrigger className="text-lg font-semibold text-gray-800 py-6 px-4 hover:text-blue-600 transition-colors rounded-2xl">
+                    Is it legal to download YouTube videos?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-600 text-base pb-6 px-4 rounded-b-2xl">
+                    Downloading videos for personal use is generally allowed, but you should always respect YouTube's terms of service and copyright laws in your country.
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </div>
         </div>
       </section>
 
